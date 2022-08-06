@@ -1,12 +1,7 @@
 import React from 'react';
 import {
 Overview
-} from './home.styles'
-import {
-
-} from '../../Constants/constant'
-import CircleLoader from "react-spinners/ClipLoader";
-import { toast } from 'react-toastify';
+} from './transfer.styles';
 
 class Transfer extends React.Component {
 constructor(props) {

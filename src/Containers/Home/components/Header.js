@@ -1,6 +1,6 @@
 import {
 
-} from '../list.styles'
+} from '../home.styles'
 
 const Header = (props) => {
 return (

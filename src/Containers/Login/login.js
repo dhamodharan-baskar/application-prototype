@@ -1,7 +1,7 @@
 import React from 'react';
 import {
 Overview
-} from './home.styles'
+} from './login.styles'
 import {
 
 } from '../../Constants/constant'
@@ -24,7 +24,7 @@ render() {
 
 return (
   <Overview>
-    Home
+    Login
   </Overview>
 )
 

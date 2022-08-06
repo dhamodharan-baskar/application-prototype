@@ -1,0 +1,9 @@
+export const SET_CONTACT_LIST = 'SET_CONTACT_LIST';
+export const UPDATE_CONTACT = 'UPDATE_CONTACT';
+export const DELETE_CONTACT = 'DELETE_CONTACT';
+export const FILTER_CONTACTS = 'FILTER_CONTACTS';
+export const SORT_CONTACTS = 'SORT_CONTACTS';
+export const IS_LOADING = 'IS_LOADING';
+export const ADD_CONTACT = 'ADD_CONTACT';
+export const SORT_LIST = 'SORT_LIST';
+export const SAVE_CONTACT = 'SAVE_CONTACT';

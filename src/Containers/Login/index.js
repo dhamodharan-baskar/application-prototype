@@ -1,4 +1,4 @@
-import Login from './Login'
+import Login from './login'
 import { connect } from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => ({

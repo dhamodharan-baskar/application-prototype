@@ -38,8 +38,6 @@ const ResponsiveAppBar = () => {
           >
             {BRAND}
           </Typography>
-
-
           <Typography
             variant="h5"
             noWrap

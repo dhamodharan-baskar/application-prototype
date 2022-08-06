@@ -9,7 +9,7 @@ import PublicHeader from "./Components/PublicHeader";
 class App extends Component {
 render() { 
   return (
-    <div className="App">
+    <div>
       <PublicHeader />
         <Router>
           <Routes>

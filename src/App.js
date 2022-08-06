@@ -4,11 +4,13 @@ import Home from "./Containers/Home";
 import Login from "./Containers/Login";
 import Transfer from "./Containers/Transfer";
 import Statement from "./Containers/Statement";
+import PublicHeader from "./Components/PublicHeader";
 
 class App extends Component {
 render() { 
   return (
     <div className="App">
+      <PublicHeader />
         <Router>
           <Routes>
             <Route exact path="/" element={<Home />} />

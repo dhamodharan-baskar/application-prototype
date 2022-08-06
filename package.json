@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -54,6 +55,7 @@
     ]
   },
   "devDependencies": {
-    "@redux-devtools/core": "^3.13.1"
+    "@redux-devtools/core": "^3.13.1",
+    "json-server": "^0.17.0"
   }
 }

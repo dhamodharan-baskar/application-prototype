@@ -1,4 +1,4 @@
-import Transfer from './Transfer'
+import Transfer from './transfer'
 import { connect } from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => ({

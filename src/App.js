@@ -5,11 +5,15 @@ import Login from "./Containers/Login";
 import Transfer from "./Containers/Transfer";
 import Statement from "./Containers/Statement";
 import PublicHeader from "./Components/PublicHeader";
+import PrivateHeader from "./Components/PrivateHeader";
+import CssBaseline from '@mui/material/CssBaseline';
+
 
 class App extends Component {
 render() { 
   return (
     <div className="App">
+      <CssBaseline />
       <PublicHeader />
         <Router>
           <Routes>

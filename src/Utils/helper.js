@@ -1,123 +1,36 @@
-import moment from 'moment';
+import { toast } from 'react-toastify';
 
-export const setContactData = (contact, event) => {
-let data = {...contact}
-if(event.target.id === 'firstName'){
-    data = {
-      ...data,
-      name: {
-        ...data.name,
-        first: event.target.value
-      }
-    }
-}
-if(event.target.id === 'lastName'){
-    data = {
-        ...data,
-        name: {
-          ...data.name,
-          last: event.target.value
+export const handleError = (err) => {
+const { data, status, config } = err;
+    switch (status) {
+      case 400:
+        if (typeof data === 'string') {
+          toast.error(data);
         }
-      }
-}
-if(event.target.id === 'cell'){
-    data = {
-      ...data,
-      [event.target.id]: event.target.value
-    }
-}
-if(event.target.id === 'email'){
-  data = {
-    ...data,
-    [event.target.id]: event.target.value
-  }
-}
-if(event.target.id === 'streetNumber'){
-  data = {
-    ...data,
-    location: {
-      ...data.location,
-      street: {
-        ...data.location.street,
-        number: event.target.value
-      }
-    }
-  }
-}
-if(event.target.id === 'streetName'){
-    data = {
-      ...data,
-      location: {
-        ...data.location,
-        street: {
-          ...data.location.street,
-          name: event.target.value
+        if (config.method === 'get' && data.errors.hasOwnProperty('id')) {
+
         }
-      } 
+        if (data.errors) {
+          toast.error('data.errors');
+          const modalStateErrors = [];
+          for (const key in data.errors) {
+            if (data.errors[key]) {
+              modalStateErrors.push(data.errors[key]);
+            }
+          }
+          throw modalStateErrors.flat();
+        }
+        break;
+      case 401:
+        toast.error('unauthorised');
+        break;
+      case 404:
+        toast.error('not-found');
+        // history.push('/not-found');
+        break;
+      case 500:
+        //mobXstore.commonStore.setServerError(data);
+        toast.error('Oops, internal error!');
+        break;
     }
-}
-if(event.target.id === 'city'){
-    data = {
-      ...data,
-      location: {
-        ...data.location,
-        [event.target.id]: event.target.value
-      } 
-    }
-}
-if(event.target.id === 'state'){
-  data = {
-    ...data,
-    location: {
-      ...data.location,
-      [event.target.id]: event.target.value
-    } 
-  }
-}
-if(event.target.id === 'postcode'){
-  data = {
-    ...data,
-    location: {
-      ...data.location,
-      [event.target.id]: event.target.value
-    } 
-  }
-}
-if(event.target.id === 'country'){
-  data = {
-    ...data,
-    location: {
-      ...data.location,
-      [event.target.id]: event.target.value
-    } 
-  }
-}
-return data
-}
-
-export const setDate = (contact, event) => {
-let data = {...contact}
-data = {
-  ...contact,
-  dob: {
-    ...contact.dob,
-    date: event,
-    age: moment().diff(moment(event, "DD-MM-YYYY"), 'years')
-  }
-}
-return data;
-}
-
-export const upLoadImage = (contact, e) => {
-let data = {...contact}
-data = {
-  ...contact,
-  picture: {
-    ...contact.picture,
-    large: URL.createObjectURL(e.target.files[0]),
-    medium: URL.createObjectURL(e.target.files[0]),
-    thumbnail: URL.createObjectURL(e.target.files[0]) 
-  }
-}
-return data;
 }

@@ -1,40 +1,70 @@
 import React from 'react';
-import Header from './components/Header';
 import {
-Overview
+Overview,
+Text
 } from './home.styles'
-import {
-
-} from '../../Constants/constant'
 import CircleLoader from "react-spinners/ClipLoader";
-import { toast } from 'react-toastify';
-import axios from 'axios';
+import Card from './components/Card';
+import Statement from './components/Statement';
 
 class Home extends React.Component {
-constructor(props) {
-super(props);
-this.state = {
-  
-};
+  constructor(props) {
+  super(props);
+  this.state = {
+    showStatement: false
+  }
 }
 
 componentDidMount() {
-  console.log('coming')
-  axios.get('http://localhost:3001/users').then(() => {
-    console.log('coming')
-  })
+  this.props.getUserData(1)
 }
 
+redirectTo = (page) => {
+  console.log('props', this.props)
+  this.props.history.push('/login')
+}
+
+setShowStatement = () => {
+  this.setState({showStatement: !this.state.showStatement})
+}
 
 render() {
+  const {
+  userData,
+  isLoading,
+  } = this.props
+  const { showStatement } = this.state
 
-return (
-  <Overview>
-    Home
-  </Overview>
-)
+  if(isLoading) {
+    return(
+      <Overview>
+        <CircleLoader />
+      </Overview>
+    )
+  }
 
-}
+  return (
+    <Overview>
+      <Card 
+        userData={userData}
+        setShowStatement={this.setShowStatement}
+        redirectTo={(page) => this.redirectTo(page)}/>
+      <Text 
+        isBold 
+        cursor={'pointer'}
+        onClick={this.setShowStatement}>
+        Show statement
+      </Text>
+      {
+        showStatement && 
+        <Statement 
+        showStatement={showStatement}
+        userData={userData}/>
+      }
+    
+    </Overview>
+  )
+ }
 }
 
 export default Home
